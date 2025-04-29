@@ -1,147 +1,134 @@
-   // Initialize cart
-    let cart = [];
-    let totalAmount = 0;
-    const cartButton = document.getElementById("cart-button");
-    const cartCount = document.getElementById("cart-count");
-    const cartTotal = document.getElementById("cart-total");
-    const modal = document.getElementById("checkout-modal");
-    const closeModal = document.querySelector(".close-modal");
-    const orderSummary = document.getElementById("order-summary");
-    const modalTotal = document.getElementById("modal-total");
-    const checkoutForm = document.getElementById("checkout-form");
+@keyframes modalOpen {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    // Search functionality
-    const searchBar = document.getElementById("search-bar");
-    const dishes = document.querySelectorAll(".dish-card");
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
 
-    searchBar.addEventListener("input", (e) => {
-        const searchText = e.target.value.toLowerCase();
-        dishes.forEach(dish => {
-            const text = dish.textContent.toLowerCase();
-            dish.style.display = text.includes(searchText) ? "block" : "none";
-        });
-    });
+.modal-content h2 {
+    background: var(--dark);
+    color: white;
+    padding: 1.5rem;
+    margin: 0;
+}
 
-    // Vegetarian filter
-    const vegetarianButton = document.getElementById("vegetarian");
-    vegetarianButton.addEventListener("click", () => {
-        dishes.forEach(dish => {
-            const isVegetarian = dish.textContent.toLowerCase().includes("vegetarian");
-            dish.style.display = isVegetarian ? "block" : "none";
-        });
-    });
+#order-summary {
+    padding: 1.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
 
-    // Add to cart functionality
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-        button.addEventListener("click", (e) => {
-            const price = parseFloat(button.dataset.price);
-            const name = button.dataset.name;
-            const dishCard = button.closest(".dish-card");
-            const imageSrc = dishCard.querySelector(".dish-image").style.backgroundImage;
-            
-            // Add to cart
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.quantity++;
-                existingItem.total += price;
-            } else {
-                cart.push({
-                    name,
-                    price,
-                    quantity: 1,
-                    total: price,
-                    image: imageSrc
-                });
-            }
-            
-            totalAmount += price;
-            updateCartUI();
-            
-            // Visual feedback
-            button.textContent = "Added!";
-            button.style.backgroundColor = "#27ae60";
-            setTimeout(() => {
-                button.textContent = "Add to Cart";
-                button.style.backgroundColor = "";
-            }, 1000);
-        });
-    });
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
 
-    // Cart button click
-    cartButton.addEventListener("click", () => {
-        if (cart.length === 0) {
-            alert("Your cart is empty!");
-            return;
-        }
-        updateOrderSummary();
-        modal.style.display = "block";
-    });
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
 
-    // Close modal
-    closeModal.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+#checkout-form {
+    padding: 0 1.5rem 1.5rem;
+}
 
-    // Close modal when clicking outside
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.style.display = "none";
-        }
-    });
+#checkout-form h3 {
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
 
-    // Form submission
-    checkoutForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (cart.length === 0) return;
-        
-        // In a real app, you would send this data to your backend
-        const formData = new FormData(checkoutForm);
-        const orderData = {
-            customer: Object.fromEntries(formData),
-            items: cart,
-            total: totalAmount,
-            date: new Date().toISOString()
-        };
-        
-        console.log("Order submitted:", orderData); // For demonstration
-        
-        // Show confirmation
-        alert(`Thank you for your order of ${totalAmount.toFixed(2)} MZN!\nWe'll contact you shortly.`);
-        
-        // Reset cart
-        cart = [];
-        totalAmount = 0;
-        updateCartUI();
-        modal.style.display = "none";
-        checkoutForm.reset();
-    });
+.form-group {
+    margin-bottom: 1rem;
+}
 
-    // Update cart UI
-    function updateCartUI() {
-        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartTotal.textContent = `${totalAmount.toFixed(2)} MZN`;
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.submit-order {
+    width: 100%;
+    padding: 1rem;
+    background: var(--success);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.3s;
+}
+
+.submit-order:hover {
+    background: #27ae60;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+footer h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+    color: #bdc3c7;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #bdc3c7;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
     }
-
-    // Update order summary in modal
-    function updateOrderSummary() {
-        orderSummary.innerHTML = "";
-        
-        cart.forEach(item => {
-            const itemElement = document.createElement("div");
-            itemElement.className = "order-item";
-            itemElement.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="width: 50px; height: 50px; border-radius: 5px; background: ${item.image}; background-size: cover;"></div>
-                    <span>${item.name}</span>
-                </div>
-                <div style="text-align: right;">
-                    <div>${item.quantity} × ${item.price.toFixed(2)} MZN</div>
-                    <div style="font-weight: bold;">${item.total.toFixed(2)} MZN</div>
-                </div>
-            `;
-            orderSummary.appendChild(itemElement);
-        });
-        
-        modalTotal.textContent = `${totalAmount.toFixed(2)} MZN`;
+    
+    .header-controls {
+        flex-direction: column;
     }
-});
+    
+    .search-container {
+        width: 100%;
+    }
+}
