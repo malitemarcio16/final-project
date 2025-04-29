@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malite's Digital Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Malite's Restaurant</h1>
+            <p class="tagline">Authentic Mozambican Cuisine</p>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#appetizers"><i class="fas fa-utensils"></i> Appetizers</a></li>
+                <li><a href="#mains"><i class="fas fa-drumstick-bite"></i> Mains</a></li>
+                <li><a href="#desserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                <li><a href="#drinks"><i class="fas fa-glass-whiskey"></i> Drinks</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-bar" placeholder="Search dishes...">
+            </div>
+            <button id="vegetarian"><i class="fas fa-leaf"></i> Vegetarian</button>
+            <div class="cart-container">
+                <button id="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+                <span id="cart-total">0.00 MZN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Appetizers Section -->
+        <section id="appetizers" class="menu-section">
+            <h2><i class="fas fa-utensils"></i> Appetizers</h2>
+            <div class="menu-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('images/bajias.png')"></div>
+                    <div class="dish-info">
+                        <h3>Badjias</h3>
+                        <p>Crispy Mozambican vegetable fritters</p>
+                        <div class="dish-footer">
+                            <span class="price">4.99 MZN</span>
+                            <button class="add-to-cart" data-price="4.99" data-name="Badjias">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other dishes follow same structure -->
+            </div>
+        </section>
+
+        <!-- Other menu sections (mains, desserts, drinks) follow same pattern -->
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-receipt"></i> Your Order</h2>
+            <div id="order-summary"></div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="modal-total">0.00 MZN</span>
+            </div>
+            <form id="checkout-form">
+                <h3>Delivery Information</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Delivery Address" required>
+                </div>
+                <button type="submit" class="submit-order">
+                    <i class="fas fa-paper-plane"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>123 Food Street, Maputo, Mozambique</p>
+                <p><i class="fas fa-phone"></i> +258 84 123 4567</p>
+            </div>
+            <div class="hours">
+                <h3>Opening Hours</h3>
+                <p>Monday-Friday: 11am - 10pm</p>
+                <p>Weekends: 12pm - 11pm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Malite's Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malite's Digital Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Malite's Restaurant</h1>
+            <p class="tagline">Authentic Mozambican Cuisine</p>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#appetizers"><i class="fas fa-utensils"></i> Appetizers</a></li>
+                <li><a href="#mains"><i class="fas fa-drumstick-bite"></i> Mains</a></li>
+                <li><a href="#desserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                <li><a href="#drinks"><i class="fas fa-glass-whiskey"></i> Drinks</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-bar" placeholder="Search dishes...">
+            </div>
+            <button id="vegetarian"><i class="fas fa-leaf"></i> Vegetarian</button>
+            <div class="cart-container">
+                <button id="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+                <span id="cart-total">0.00 MZN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Appetizers Section -->
+        <section id="appetizers" class="menu-section">
+            <h2><i class="fas fa-utensils"></i> Appetizers</h2>
+            <div class="menu-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('images/bajias.png')"></div>
+                    <div class="dish-info">
+                        <h3>Badjias</h3>
+                        <p>Crispy Mozambican vegetable fritters</p>
+                        <div class="dish-footer">
+                            <span class="price">4.99 MZN</span>
+                            <button class="add-to-cart" data-price="4.99" data-name="Badjias">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other dishes follow same structure -->
+            </div>
+        </section>
+
+        <!-- Other menu sections (mains, desserts, drinks) follow same pattern -->
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-receipt"></i> Your Order</h2>
+            <div id="order-summary"></div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="modal-total">0.00 MZN</span>
+            </div>
+            <form id="checkout-form">
+                <h3>Delivery Information</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Delivery Address" required>
+                </div>
+                <button type="submit" class="submit-order">
+                    <i class="fas fa-paper-plane"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>123 Food Street, Maputo, Mozambique</p>
+                <p><i class="fas fa-phone"></i> +258 84 123 4567</p>
+            </div>
+            <div class="hours">
+                <h3>Opening Hours</h3>
+                <p>Monday-Friday: 11am - 10pm</p>
+                <p>Weekends: 12pm - 11pm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Malite's Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malite's Digital Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Malite's Restaurant</h1>
+            <p class="tagline">Authentic Mozambican Cuisine</p>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#appetizers"><i class="fas fa-utensils"></i> Appetizers</a></li>
+                <li><a href="#mains"><i class="fas fa-drumstick-bite"></i> Mains</a></li>
+                <li><a href="#desserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                <li><a href="#drinks"><i class="fas fa-glass-whiskey"></i> Drinks</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-bar" placeholder="Search dishes...">
+            </div>
+            <button id="vegetarian"><i class="fas fa-leaf"></i> Vegetarian</button>
+            <div class="cart-container">
+                <button id="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+                <span id="cart-total">0.00 MZN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Appetizers Section -->
+        <section id="appetizers" class="menu-section">
+            <h2><i class="fas fa-utensils"></i> Appetizers</h2>
+            <div class="menu-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('images/bajias.png')"></div>
+                    <div class="dish-info">
+                        <h3>Badjias</h3>
+                        <p>Crispy Mozambican vegetable fritters</p>
+                        <div class="dish-footer">
+                            <span class="price">4.99 MZN</span>
+                            <button class="add-to-cart" data-price="4.99" data-name="Badjias">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other dishes follow same structure -->
+            </div>
+        </section>
+
+        <!-- Other menu sections (mains, desserts, drinks) follow same pattern -->
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-receipt"></i> Your Order</h2>
+            <div id="order-summary"></div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="modal-total">0.00 MZN</span>
+            </div>
+            <form id="checkout-form">
+                <h3>Delivery Information</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Delivery Address" required>
+                </div>
+                <button type="submit" class="submit-order">
+                    <i class="fas fa-paper-plane"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>123 Food Street, Maputo, Mozambique</p>
+                <p><i class="fas fa-phone"></i> +258 84 123 4567</p>
+            </div>
+            <div class="hours">
+                <h3>Opening Hours</h3>
+                <p>Monday-Friday: 11am - 10pm</p>
+                <p>Weekends: 12pm - 11pm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Malite's Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malite's Digital Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Malite's Restaurant</h1>
+            <p class="tagline">Authentic Mozambican Cuisine</p>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#appetizers"><i class="fas fa-utensils"></i> Appetizers</a></li>
+                <li><a href="#mains"><i class="fas fa-drumstick-bite"></i> Mains</a></li>
+                <li><a href="#desserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                <li><a href="#drinks"><i class="fas fa-glass-whiskey"></i> Drinks</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-bar" placeholder="Search dishes...">
+            </div>
+            <button id="vegetarian"><i class="fas fa-leaf"></i> Vegetarian</button>
+            <div class="cart-container">
+                <button id="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+                <span id="cart-total">0.00 MZN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Appetizers Section -->
+        <section id="appetizers" class="menu-section">
+            <h2><i class="fas fa-utensils"></i> Appetizers</h2>
+            <div class="menu-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('images/bajias.png')"></div>
+                    <div class="dish-info">
+                        <h3>Badjias</h3>
+                        <p>Crispy Mozambican vegetable fritters</p>
+                        <div class="dish-footer">
+                            <span class="price">4.99 MZN</span>
+                            <button class="add-to-cart" data-price="4.99" data-name="Badjias">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other dishes follow same structure -->
+            </div>
+        </section>
+
+        <!-- Other menu sections (mains, desserts, drinks) follow same pattern -->
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-receipt"></i> Your Order</h2>
+            <div id="order-summary"></div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="modal-total">0.00 MZN</span>
+            </div>
+            <form id="checkout-form">
+                <h3>Delivery Information</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Delivery Address" required>
+                </div>
+                <button type="submit" class="submit-order">
+                    <i class="fas fa-paper-plane"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>123 Food Street, Maputo, Mozambique</p>
+                <p><i class="fas fa-phone"></i> +258 84 123 4567</p>
+            </div>
+            <div class="hours">
+                <h3>Opening Hours</h3>
+                <p>Monday-Friday: 11am - 10pm</p>
+                <p>Weekends: 12pm - 11pm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Malite's Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malite's Digital Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Malite's Restaurant</h1>
+            <p class="tagline">Authentic Mozambican Cuisine</p>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#appetizers"><i class="fas fa-utensils"></i> Appetizers</a></li>
+                <li><a href="#mains"><i class="fas fa-drumstick-bite"></i> Mains</a></li>
+                <li><a href="#desserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                <li><a href="#drinks"><i class="fas fa-glass-whiskey"></i> Drinks</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-bar" placeholder="Search dishes...">
+            </div>
+            <button id="vegetarian"><i class="fas fa-leaf"></i> Vegetarian</button>
+            <div class="cart-container">
+                <button id="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+                <span id="cart-total">0.00 MZN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Appetizers Section -->
+        <section id="appetizers" class="menu-section">
+            <h2><i class="fas fa-utensils"></i> Appetizers</h2>
+            <div class="menu-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('images/bajias.png')"></div>
+                    <div class="dish-info">
+                        <h3>Badjias</h3>
+                        <p>Crispy Mozambican vegetable fritters</p>
+                        <div class="dish-footer">
+                            <span class="price">4.99 MZN</span>
+                            <button class="add-to-cart" data-price="4.99" data-name="Badjias">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other dishes follow same structure -->
+            </div>
+        </section>
+
+        <!-- Other menu sections (mains, desserts, drinks) follow same pattern -->
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-receipt"></i> Your Order</h2>
+            <div id="order-summary"></div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="modal-total">0.00 MZN</span>
+            </div>
+            <form id="checkout-form">
+                <h3>Delivery Information</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Delivery Address" required>
+                </div>
+                <button type="submit" class="submit-order">
+                    <i class="fas fa-paper-plane"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>123 Food Street, Maputo, Mozambique</p>
+                <p><i class="fas fa-phone"></i> +258 84 123 4567</p>
+            </div>
+            <div class="hours">
+                <h3>Opening Hours</h3>
+                <p>Monday-Friday: 11am - 10pm</p>
+                <p>Weekends: 12pm - 11pm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Malite's Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malite's Digital Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Malite's Restaurant</h1>
+            <p class="tagline">Authentic Mozambican Cuisine</p>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#appetizers"><i class="fas fa-utensils"></i> Appetizers</a></li>
+                <li><a href="#mains"><i class="fas fa-drumstick-bite"></i> Mains</a></li>
+                <li><a href="#desserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                <li><a href="#drinks"><i class="fas fa-glass-whiskey"></i> Drinks</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-bar" placeholder="Search dishes...">
+            </div>
+            <button id="vegetarian"><i class="fas fa-leaf"></i> Vegetarian</button>
+            <div class="cart-container">
+                <button id="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+                <span id="cart-total">0.00 MZN</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Appetizers Section -->
+        <section id="appetizers" class="menu-section">
+            <h2><i class="fas fa-utensils"></i> Appetizers</h2>
+            <div class="menu-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('images/bajias.png')"></div>
+                    <div class="dish-info">
+                        <h3>Badjias</h3>
+                        <p>Crispy Mozambican vegetable fritters</p>
+                        <div class="dish-footer">
+                            <span class="price">4.99 MZN</span>
+                            <button class="add-to-cart" data-price="4.99" data-name="Badjias">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other dishes follow same structure -->
+            </div>
+        </section>
+
+        <!-- Other menu sections (mains, desserts, drinks) follow same pattern -->
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-receipt"></i> Your Order</h2>
+            <div id="order-summary"></div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="modal-total">0.00 MZN</span>
+            </div>
+            <form id="checkout-form">
+                <h3>Delivery Information</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Delivery Address" required>
+                </div>
+                <button type="submit" class="submit-order">
+                    <i class="fas fa-paper-plane"></i> Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>123 Food Street, Maputo, Mozambique</p>
+                <p><i class="fas fa-phone"></i> +258 84 123 4567</p>
+            </div>
+            <div class="hours">
+                <h3>Opening Hours</h3>
+                <p>Monday-Friday: 11am - 10pm</p>
+                <p>Weekends: 12pm - 11pm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Malite's Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
